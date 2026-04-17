@@ -1,0 +1,90 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <main class="application-page">
+        <section class="application">
+            <h1 class="application__title">Tell us about your project</h1>
+            <p class="application__text">
+                Fill out the form and we will get back to you with an estimate and next steps.
+            </p>
+
+            <form class="application-form" id="application-form" method="post" action="{{ path('api_application_create') }}" enctype="multipart/form-data" data-endpoint="{{ path('api_application_create') }}">
+                <div class="application-form__field">
+                    <label class="application-form__label" for="name">Name</label>
+                    <input class="application-form__control" id="name" type="text" name="name" required>
+                </div>
+
+                <div class="application-form__field">
+                    <label class="application-form__label" for="email">Email</label>
+                    <input class="application-form__control" id="email" type="email" name="email" required>
+                </div>
+
+                <div class="application-form__field">
+                    <label class="application-form__label" for="phone">Phone</label>
+                    <input class="application-form__control" id="phone" type="tel" name="phone" required>
+                </div>
+
+                <div class="application-form__field">
+                    <label class="application-form__label" for="city">City</label>
+                    <input class="application-form__control" id="city" type="text" name="city" required>
+                </div>
+
+                <div class="application-form__field">
+                    <label class="application-form__label" for="homeType">Home type</label>
+                    <select class="application-form__control" id="homeType" name="homeType">
+                        <option value="">Select home type</option>
+                        {% for homeType in homeTypes %}
+                            <option value="{{ homeType }}">{{ homeType }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="application-form__field">
+                    <label class="application-form__label" for="fireplaceUnit">Fireplace unit</label>
+                    <select class="application-form__control" id="fireplaceUnit" name="fireplaceUnit">
+                        <option value="">Select fireplace unit</option>
+                        {% for fireplaceUnitType in fireplaceUnitTypes %}
+                            <option value="{{ fireplaceUnitType }}">{{ fireplaceUnitType }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="application-form__field application-form__field--full">
+                    <label class="application-form__label" for="finishWanted">Finish wanted</label>
+                    <select class="application-form__control" id="finishWanted" name="finishWanted">
+                        <option value="">Select finish wanted</option>
+                        {% for finishWantedType in finishWantedTypes %}
+                            <option value="{{ finishWantedType }}">{{ finishWantedType }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="application-form__field application-form__field--full">
+                    <label class="application-form__label" for="spaceSetup">Describe your space setup</label>
+                    <textarea class="application-form__control application-form__control--textarea" id="spaceSetup" name="spaceSetup"></textarea>
+                </div>
+
+                <div class="application-form__field application-form__field--full">
+                    <label class="application-form__label" for="howDidYourHearAboutUs">How did you hear about us?</label>
+                    <textarea class="application-form__control application-form__control--textarea" id="howDidYourHearAboutUs" name="howDidYourHearAboutUs"></textarea>
+                </div>
+
+                <div class="application-form__field application-form__field--full">
+                    <label class="application-form__label" for="spacePhoto">Space photo</label>
+                    <input class="application-form__control application-form__control--file" id="spacePhoto" type="file" name="spacePhoto" accept="image/*">
+                </div>
+
+                <div class="application-form__field application-form__field--full">
+                    <label class="application-form__label" for="additionalNotes">Additional notes</label>
+                    <textarea class="application-form__control application-form__control--textarea" id="additionalNotes" name="additionalNotes" required></textarea>
+                </div>
+
+                <p class="application-form__status application-form__field--full" role="status" aria-live="polite"></p>
+
+                <div class="application-form__actions application-form__field--full">
+                    <button class="button btn-bg-d-grey" type="submit">Submit application</button>
+                </div>
+            </form>
+        </section>
+    </main>
+{% endblock %}

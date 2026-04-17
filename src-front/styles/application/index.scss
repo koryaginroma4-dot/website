@@ -1,0 +1,126 @@
+@use './../shared/colors.scss' as colors;
+@use './../shared/fonts.scss' as fonts;
+
+.application-page {
+    padding: 60px 36px 100px;
+}
+
+.application {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 60px;
+    border-radius: 20px;
+    background-color: rgba(100%, 100%, 100%, 0.07462);
+
+    &__title {
+        font-size: fonts.$pre-pre-super-big;
+        font-weight: 400;
+    }
+
+    &__text {
+        margin-top: 16px;
+        font-size: fonts.$prebig;
+        font-weight: 300;
+        color: rgba(251, 252, 253, 0.85);
+    }
+}
+
+.application-form {
+    margin-top: 36px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+
+    &__field {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        &--full {
+            grid-column: 1 / -1;
+        }
+    }
+
+    &__label {
+        font-size: fonts.$medium;
+        font-weight: 300;
+    }
+
+    &__control {
+        border: 1px solid rgba(251, 252, 253, 0.25);
+        background-color: rgba(251, 252, 253, 0.08);
+        color: colors.$white;
+        border-radius: 10px;
+        padding: 14px 16px;
+        font-family: inherit;
+        font-size: fonts.$medium;
+        outline: none;
+        transition: border-color .2s ease-in-out, background-color .2s ease-in-out;
+
+        &:focus {
+            border-color: rgba(251, 252, 253, 0.45);
+            background-color: rgba(251, 252, 253, 0.13);
+        }
+
+        &--textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        &--file {
+            padding: 10px 12px;
+        }
+    }
+
+    &__status {
+        min-height: 20px;
+        margin-top: -4px;
+        font-size: fonts.$medium;
+        font-weight: 300;
+        color: rgba(251, 252, 253, 0.7);
+
+        &[data-state="success"] {
+            color: #9be79b;
+        }
+
+        &[data-state="error"] {
+            color: #ffb4b4;
+        }
+    }
+
+    &__actions {
+        margin-top: 4px;
+
+        .button {
+            min-width: 220px;
+        }
+    }
+}
+
+@media (max-width: 900px) {
+    .application {
+        padding: 40px 28px;
+    }
+}
+
+@media (max-width: 680px) {
+    .application-page {
+        padding: 32px 16px 60px;
+    }
+
+    .application {
+        padding: 28px 20px;
+
+        &__title {
+            font-size: fonts.$pre-super-big;
+        }
+
+        &__text {
+            font-size: fonts.$medium;
+        }
+    }
+
+    .application-form {
+        grid-template-columns: 1fr;
+    }
+}

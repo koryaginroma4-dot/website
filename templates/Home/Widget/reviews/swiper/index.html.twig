@@ -1,0 +1,26 @@
+<div class="reviews-swiper swiper">
+    <div class="swiper-wrapper">
+        {% if reviews is not empty %}
+            {% for review in reviews %}
+                {% include 'Home/Widget/reviews/swiper/card.html.twig' with { review: review } only %}
+            {% endfor %}
+        {% else %}
+            {% include 'Home/Widget/reviews/swiper/card.html.twig' with {
+                review: {
+                    authorName: 'Your Name',
+                    authorLocation: 'Homeowner, Toronto',
+                    comment: 'No reviews yet. Be the first to leave your feedback.'
+                }
+            } only %}
+        {% endif %}
+    </div>
+
+    <div class="reviews-swiper-nav">
+        <button class="reviews-swiper-nav__left-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" width="24" height="24" class="size-5"><path fill="none" d="M0 0h24v24H0z"></path><path d="M15.41 7.41 14 6l-6 6 6 6 1.41-1.41L10.83 12z"></path></svg>
+        </button>
+        <button class="reviews-swiper-nav__right-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" width="24" height="24" class="size-5"><path fill="none" d="M0 0h24v24H0z"></path><path d="M10 6 8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"></path></svg>
+        </button>
+    </div>
+</div>

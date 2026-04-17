@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {{ parent() }}
+
+   {% include('Home/Widget/renovations.html.twig') %}
+
+   {% include('Home/Widget/our-services.html.twig') %}
+
+   {% include('Home/Widget/categories/index.html.twig') %}
+
+   {% include('Home/Widget/reviews/index.html.twig') %}
+
+   {% include('Home/Widget/numbers.html.twig') %}
+
+   {% include('Home/Widget/contacts.html.twig') %}
+
+    {% include('Home/Widget/map.html.twig') with {
+        lat: 43.6532,
+        lng: -79.3832,
+        zoom: 11
+    } %}
+{% endblock %}
+
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDYy05iE9s6xDeX6Mj-eyINH344eE67Aok&callback=initMap" async defer></script>
+{% endblock %}

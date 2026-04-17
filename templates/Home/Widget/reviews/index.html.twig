@@ -1,0 +1,26 @@
+<div class="reviews-container" id="reviews">
+    <section class="reviews">
+        <div class="reviews__left-container">
+            <h3 class="section-subtitle">
+                <span class="section-subtitle-underline"></span> Customer Reviews
+            </h3>
+            
+            <h2 class="section-title">
+                Homeowners Trust Toronto Reno Experts
+            </h2>
+        </div>
+
+        <div class="reviews__right-container">
+            <p class="reviews__description">
+                Real feedback from Toronto and GTA homeowners who've completed renovations with us. See the results that matter.
+            </p>
+
+            <div class="reviews__control">
+                <button class="button btn-bg-d-grey">
+                    <a href="{{ path('review') }}">Leave a review</a>
+                </button>
+            </div>
+        </div>
+    </section>
+    {% include 'Home/Widget/reviews/swiper/index.html.twig' with { reviews: reviews|default([]) } %}
+</div>

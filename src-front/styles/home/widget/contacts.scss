@@ -1,0 +1,67 @@
+@use './../../shared/fonts.scss' as fonts;
+@use './../../shared/colors.scss' as colors;
+
+.contacts {
+    &-container {
+        background-color: rgba(100%, 100%, 100%, 0.07462);
+        padding: 132px 96px;
+        margin: 0 36px;
+        margin-top: 60px;
+        border-radius: 20px;
+    }
+
+    max-width: 576px;
+    width: 100%;
+    min-height: 328px;
+
+    &__title {
+        font-weight: 400;
+        font-size: fonts.$pre-pre-super-big;
+    }
+
+    &__text {
+        margin-top: 30px;
+        font-weight: 300;
+        font-size: fonts.$prebig;
+    }
+
+    & > button {
+        margin-top: 30px;
+    }
+}
+@media (max-width: 1024px) {
+    .contacts {
+        max-width: none;
+
+        &-container {
+            padding: 80px 56px;
+            margin: 0 28px;
+            margin-top: 60px;
+        }
+    }
+}
+
+@media (max-width: 680px) {
+    .contacts {
+        &-container {
+            padding: 40px 20px;
+            margin: 0 16px;
+            margin-top: 40px;
+            border-radius: 16px;
+        }
+
+        &__title {
+            font-size: fonts.$pre-super-big;
+        }
+
+        &__text {
+            margin-top: 20px;
+            font-size: fonts.$medium;
+        }
+
+        & > button {
+            margin-top: 24px;
+            width: 100%;
+        }
+    }
+}

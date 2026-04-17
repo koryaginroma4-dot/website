@@ -1,0 +1,76 @@
+@use './../../shared/fonts.scss' as fonts;
+@use './../../shared/colors.scss' as colors;
+
+.renovations {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    padding: 0 36px;
+    &-about {
+        max-width: 576px;
+
+        &__text {
+            margin-top: 34px;
+            font-size: fonts.$big;
+            line-height: 1.5;
+        }
+
+        &__control {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 15px;
+            margin-top: 34px;
+        }
+    }
+
+    &-image {
+        background: url('@images/renovations_img.webp');
+        background-repeat: no-repeat;
+        background-position: 50% 50%;
+        background-size: cover;
+        width: min(696px, 100%);
+        aspect-ratio: 696 / 626;
+        border-radius: 20px;
+    }
+}
+@media (max-width: 1024px) {
+    .renovations {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 0 28px;
+        gap: 30px;
+
+        &-about {
+            max-width: none;
+
+            &__control {
+                flex-wrap: wrap;
+            }
+        }
+
+        &-image {
+            width: 100%;
+        }
+    }
+}
+
+@media (max-width: 680px) {
+    .renovations {
+        padding: 0 16px;
+        gap: 24px;
+
+        &-about {
+            &__text {
+                font-size: fonts.$prebig;
+            }
+
+            &__control {
+                flex-direction: column;
+                align-items: stretch;
+                width: 100%;
+            }
+        }
+    }
+}

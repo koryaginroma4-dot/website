@@ -1,0 +1,6 @@
+# pentatrion_vite:
+#     default_build: default
+    
+#     builds:
+#         default:
+#             build_directory: '%kernel.project_dir%/public/build'

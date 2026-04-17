@@ -1,0 +1,5 @@
+framework:
+    notifier:
+        chatter_transports:
+            telegram: 'telegram://8626638183:AAEi9ZIchFqA8oPEVd74Y-2JNNddRvjZsno@default?channel=CHAT_ID'
+            # TODO add chat id

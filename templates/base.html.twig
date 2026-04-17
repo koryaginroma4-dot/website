@@ -1,0 +1,26 @@
+{% set page_seo = seo(page_slug|default(null)) %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{% block title %}{{ page_seo ? page_seo.title : 'Welcome!' }}{% endblock %}</title>
+        <meta name="description" content="{% block meta_description %}{{ page_seo ? page_seo.metaDesription : '' }}{% endblock %}">
+        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
+        {% block stylesheets %}
+            {{ vite_entry_link_tags('main') }}
+            <link rel="stylesheet" href="{{ asset('/main.css') }}" />
+        {% endblock %}
+    </head>
+    <body>
+        {% include('Shared/header.html.twig') %}
+        
+        {% block body %}{% endblock %}
+
+        {% include('Shared/footer.html.twig') %}
+
+        {% block javascripts %}
+            {{ vite_entry_script_tags('main') }}
+        {% endblock %}
+    </body>
+</html>

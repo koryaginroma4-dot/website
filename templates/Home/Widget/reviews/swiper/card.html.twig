@@ -1,0 +1,32 @@
+<div class="swiper-slide">
+    <div class="reviews-swiper-card">
+        <div class="reviews-swiper-card__header-container">
+            <header class="reviews-swiper-card__header">
+                <div class="reviews-swiper-card__header_quot">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" width="24" height="24" style="color: rgb(249, 253, 251);"><path fill="none" d="M0 0h24v24H0z"></path><path d="M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z"></path></svg>
+                </div>
+
+                <p class="reviews-swiper-card__header_comment">
+                    {{ review.comment }}
+                </p>
+            </header>
+        </div>
+        <div class="reviews-swiper-card__footer-container">
+            <footer class="reviews-swiper-card__footer">
+                <div class="reviews-swiper-card__author">
+                    <div class="reviews-swiper-card__author-badge">
+                        {{ review.authorName|slice(0, 1)|upper }}
+                    </div>
+                    <div class="reviews-swiper-card__author-about">
+                        <div class="reviews-swiper-card__author-name">
+                            {{ review.authorName }}
+                        </div>
+                        <div class="reviews-swiper-card__author-location">
+                            {{ review.authorLocation ?? 'Homeowner, Toronto' }}
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+</div>

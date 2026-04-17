@@ -1,0 +1,11 @@
+<div class="category">
+    <img 
+        class="category__image" 
+        src="{{ image_url(category.imageUrl) }}" 
+        alt="{{category.name}}" 
+    />
+
+    <h3 class="category__name" >{{category.name}}</h3>
+    
+    <p class="category__description">{{category.description|raw}}</p>
+</div>

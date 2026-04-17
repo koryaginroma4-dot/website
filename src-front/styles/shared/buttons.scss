@@ -1,0 +1,43 @@
+@use './colors.scss' as colors;
+@use './fonts.scss' as fonts;
+
+button {
+    cursor: pointer;
+}
+
+.button {
+    padding: 15px 30px;
+    color: colors.$black;
+    background-color: colors.$white;
+    border-radius: 10px;
+    font-size: fonts.$medium;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    max-width: 100%;
+
+    &:hover {
+        background-color: colors.$grey !important;
+    }
+
+    transition: .3s ease-in-out;
+}
+
+.button > a {
+    display: block;
+    width: 100%;
+}
+
+.btn-bg-d-grey {
+    background-color: colors.$dark-grey !important;
+
+    &:hover {
+        background-color: colors.$dark-grey-hover !important;
+    }
+}
+@media (max-width: 680px) {
+    .button {
+        padding: 13px 20px;
+    }
+}

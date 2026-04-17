@@ -1,0 +1,37 @@
+@use './../../shared/fonts.scss' as fonts;
+@use './../../shared/colors.scss' as colors;
+
+.section-subtitle {
+    font-size: fonts.$small;
+    font-weight: 400;
+
+    &-underline {
+        display: inline-block;
+        width: 30px;
+        height: 1px;
+        background-color: colors.$white;
+    }
+}
+
+.section-title {
+    font-size: fonts.$super-big;
+    font-weight: 500;
+    margin-top: 16px;
+    line-height: 1.12;
+}
+
+@media (max-width: 900px) {
+    .section-title {
+        font-size: fonts.$pre-pre-super-big;
+    }
+}
+
+@media (max-width: 680px) {
+    .section-subtitle {
+        font-size: 11px;
+    }
+
+    .section-title {
+        font-size: fonts.$pre-super-big;
+    }
+}

@@ -1,0 +1,41 @@
+
+services:
+  php:
+    build:
+      context: .
+      dockerfile: ./docker/backend.Dockerfile
+    volumes:
+      - ./:/var/www/
+    env_file:
+      - .env
+      - .env.dev
+    depends_on:
+      - database
+  nginx:
+    build:
+      context: .
+      dockerfile: ./docker/frontend.Dockerfile
+    ports:
+      - "8087:80"
+    volumes:
+      - ./:/var/www/
+    depends_on:
+      - php
+  database:
+    image: postgres:${POSTGRES_VERSION:?set POSTGRES_VERSION in .env/.env.local}-alpine
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:?set POSTGRES_DB in .env/.env.local}
+      POSTGRES_USER: ${POSTGRES_USER:?set POSTGRES_USER in .env.local}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD in .env.local}
+    healthcheck:
+      test: ["CMD", "pg_isready", "-d", "${POSTGRES_DB}", "-U", "${POSTGRES_USER}"]
+      timeout: 5s
+      retries: 5
+      start_period: 60s
+    ports:
+      - "5432:5432"
+    volumes:
+      - database_data:/var/lib/postgresql/data:rw
+
+volumes:
+  database_data:

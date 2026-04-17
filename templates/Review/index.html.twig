@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <main class="review-page">
+        <section class="review">
+            <h1 class="review__title">Leave a review</h1>
+            <p class="review__text">
+                Share your feedback about your renovation experience with our team.
+            </p>
+
+            <form class="review-form" id="review-form" method="post" action="{{ path('api_review_create') }}" data-endpoint="{{ path('api_review_create') }}">
+                <div class="review-form__field">
+                    <label class="review-form__label" for="authorName">Name</label>
+                    <input class="review-form__control" id="authorName" type="text" name="authorName" required>
+                </div>
+
+                <div class="review-form__field">
+                    <label class="review-form__label" for="authorLocation">Location</label>
+                    <input class="review-form__control" id="authorLocation" type="text" name="authorLocation" placeholder="e.g. North York">
+                </div>
+
+                <div class="review-form__field review-form__field--full">
+                    <label class="review-form__label" for="comment">Review</label>
+                    <textarea class="review-form__control review-form__control--textarea" id="comment" name="comment" required></textarea>
+                </div>
+
+                <p class="review-form__status review-form__field--full" role="status" aria-live="polite"></p>
+
+                <div class="review-form__actions review-form__field--full">
+                    <button class="button btn-bg-d-grey" type="submit">Submit review</button>
+                </div>
+            </form>
+        </section>
+    </main>
+{% endblock %}
