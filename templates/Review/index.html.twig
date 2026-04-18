@@ -1,5 +1,15 @@
 {% extends 'base.html.twig' %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    {{ vite_entry_link_tags('review') }}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ vite_entry_script_tags('review') }}
+{% endblock %}
+
 {% block body %}
     <main class="review-page">
         <section class="review">

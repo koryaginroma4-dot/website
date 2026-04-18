@@ -15,7 +15,10 @@ export default defineConfig({
         emptyOutDir: true,
         rollupOptions: {
             input: {
-                main: path.resolve(__dirname, 'src-front/main.ts')
+                main: path.resolve(__dirname, 'src-front/main.ts'),
+                home: path.resolve(__dirname, 'src-front/home.ts'),
+                application: path.resolve(__dirname, 'src-front/application.ts'),
+                review: path.resolve(__dirname, 'src-front/review.ts')
             }
         }
     },

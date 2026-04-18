@@ -1,9 +1,3 @@
 // Shared
 @use './styles/shared/base.scss';
 @use './styles/shared/buttons.scss';
-@use './styles/shared/colors.scss' as colors;
-
-// Pages
-@use './styles/home/index.scss' as home;
-@use './styles/application/index.scss' as application;
-@use './styles/review/index.scss' as review;

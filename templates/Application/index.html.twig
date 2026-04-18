@@ -1,5 +1,15 @@
 {% extends 'base.html.twig' %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    {{ vite_entry_link_tags('application') }}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ vite_entry_script_tags('application') }}
+{% endblock %}
+
 {% block body %}
     <main class="application-page">
         <section class="application">

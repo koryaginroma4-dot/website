@@ -24,6 +24,7 @@ RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
         zip
 
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+COPY ./docker/php/opcache.ini /usr/local/etc/php/conf.d/99-opcache.ini
 
 WORKDIR /var/www
 
