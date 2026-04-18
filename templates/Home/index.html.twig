@@ -13,16 +13,12 @@
         {% include('Home/Widget/reviews/index.html.twig') %}
         {% include('Home/Widget/numbers.html.twig') %}
         {% include('Home/Widget/contacts.html.twig') %}
-        {% include('Home/Widget/map.html.twig') with {
-            lat: 43.6532,
-            lng: -79.3832,
-            zoom: 11
-        } %}
+        {% include('Home/Widget/map.html.twig') %}
     </main>
 {% endblock %}
 
 {% block javascripts %}
     {{ parent() }}
     {{ vite_entry_script_tags('home') }}
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDYy05iE9s6xDeX6Mj-eyINH344eE67Aok&callback=initMap" async defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCl86zgXfPIzRo0lwrJPHZPUvseWOMs68Y" async defer onload="window.initMap && window.initMap()"></script>
 {% endblock %}

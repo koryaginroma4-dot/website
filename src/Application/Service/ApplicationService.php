@@ -7,6 +7,8 @@ namespace App\Application\Service;
 use App\Application\DTO\ApplicationDTO;
 use App\Application\Exception\SaveApplicationException;
 use App\Application\Factory\ApplicationFactory;
+use App\Domain\Entity\Application;
+use App\Domain\Enum\ProjectType;
 use App\Domain\Exception\Code\Code;
 use App\Infrastructure\Repository\ApplicationRepository;
 use Psr\Log\LoggerAwareInterface;
@@ -20,6 +22,9 @@ class ApplicationService implements LoggerAwareInterface
     public function __construct(
         private readonly ApplicationRepository $applicationRepository,
         private readonly ApplicationFactory $applicationFactory,
+        private readonly BasementApplicationDetailsService $basementApplicationDetailsService,
+        private readonly BathroomApplicationDetailsService $bathroomApplicationDetailsService,
+        private readonly KitchenApplicationDetailsService $kitchenApplicationDetailsService,
         private readonly TelegramService $telegramService,
     ) {
     }
@@ -30,6 +35,7 @@ class ApplicationService implements LoggerAwareInterface
             $application = $this->applicationFactory->createFromDTO($applicationDTO);
 
             $this->applicationRepository->save($application);
+            $this->saveTypeDetails($applicationDTO, $application);
 
             // $this->telegramService->sendApplicationMessage($application);
         } catch (Throwable $exception) {
@@ -43,6 +49,29 @@ class ApplicationService implements LoggerAwareInterface
                 Code::FATAL,
                 $exception
             );
+        }
+    }
+
+    private function saveTypeDetails(ApplicationDTO $applicationDTO, Application $application): void
+    {
+        switch ($applicationDTO->projectType) {
+            case ProjectType::BasementRenovation->value:
+                $this->basementApplicationDetailsService->save($application, $applicationDTO->basementDetails);
+
+                return;
+
+            case ProjectType::BathroomRenovation->value:
+                $this->bathroomApplicationDetailsService->save($application, $applicationDTO->bathroomDetails);
+
+                return;
+
+            case ProjectType::KitchenRenovation->value:
+                $this->kitchenApplicationDetailsService->save($application, $applicationDTO->kitchenDetails);
+
+                return;
+
+            default:
+                return;
         }
     }
 }

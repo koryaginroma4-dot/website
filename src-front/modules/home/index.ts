@@ -1,4 +1,4 @@
-// import './../common/map/map';
+import './../common/map/map';
 import { ReviewSwiper } from "./swiper/review-swiper";
 
 const REVIEW_SWIPER_ID = '.reviews-swiper';

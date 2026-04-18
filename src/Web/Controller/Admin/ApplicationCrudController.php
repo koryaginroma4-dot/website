@@ -9,6 +9,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\EmailField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TelephoneField;
@@ -43,6 +44,10 @@ class ApplicationCrudController extends AbstractCrudController
         yield EmailField::new('email');
         yield TelephoneField::new('phone');
         yield TextField::new('city');
+        yield TextField::new('projectType');
+        yield TextField::new('preferredStartTime')->hideOnIndex();
+        yield TextField::new('budgetRange')->hideOnIndex();
+        yield BooleanField::new('ownsProperty')->hideOnIndex();
         yield TextField::new('homeType')->hideOnIndex();
         yield TextField::new('fireplaceUnit')->hideOnIndex();
         yield TextField::new('finishWanted')->hideOnIndex();

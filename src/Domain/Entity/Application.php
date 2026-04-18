@@ -30,6 +30,17 @@ class Application
 
     #[ORM\Column(length: 255)]
     private string $city;
+    #[ORM\Column(length: 255)]
+    private string $projectType;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $preferredStartTime = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $budgetRange = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?bool $ownsProperty = null;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $howDidYourHearAboutUs = null;
@@ -101,6 +112,54 @@ class Application
     public function setCity(string $city): self
     {
         $this->city = $city;
+
+        return $this;
+    }
+
+    public function getProjectType(): string
+    {
+        return $this->projectType;
+    }
+
+    public function setProjectType(string $projectType): self
+    {
+        $this->projectType = $projectType;
+
+        return $this;
+    }
+
+    public function getPreferredStartTime(): ?string
+    {
+        return $this->preferredStartTime;
+    }
+
+    public function setPreferredStartTime(?string $preferredStartTime): self
+    {
+        $this->preferredStartTime = $preferredStartTime;
+
+        return $this;
+    }
+
+    public function getBudgetRange(): ?string
+    {
+        return $this->budgetRange;
+    }
+
+    public function setBudgetRange(?string $budgetRange): self
+    {
+        $this->budgetRange = $budgetRange;
+
+        return $this;
+    }
+
+    public function getOwnsProperty(): ?bool
+    {
+        return $this->ownsProperty;
+    }
+
+    public function setOwnsProperty(?bool $ownsProperty): self
+    {
+        $this->ownsProperty = $ownsProperty;
 
         return $this;
     }

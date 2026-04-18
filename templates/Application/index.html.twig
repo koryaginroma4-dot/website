@@ -20,13 +20,8 @@
 
             <form class="application-form" id="application-form" method="post" action="{{ path('api_application_create') }}" enctype="multipart/form-data" data-endpoint="{{ path('api_application_create') }}">
                 <div class="application-form__field">
-                    <label class="application-form__label" for="name">Name</label>
+                    <label class="application-form__label" for="name">Full name</label>
                     <input class="application-form__control" id="name" type="text" name="name" required>
-                </div>
-
-                <div class="application-form__field">
-                    <label class="application-form__label" for="email">Email</label>
-                    <input class="application-form__control" id="email" type="email" name="email" required>
                 </div>
 
                 <div class="application-form__field">
@@ -35,58 +30,60 @@
                 </div>
 
                 <div class="application-form__field">
-                    <label class="application-form__label" for="city">City</label>
+                    <label class="application-form__label" for="email">Email</label>
+                    <input class="application-form__control" id="email" type="email" name="email" required>
+                </div>
+
+                <div class="application-form__field">
+                    <label class="application-form__label" for="city">Property address or city</label>
                     <input class="application-form__control" id="city" type="text" name="city" required>
                 </div>
 
-                <div class="application-form__field">
-                    <label class="application-form__label" for="homeType">Home type</label>
-                    <select class="application-form__control" id="homeType" name="homeType">
-                        <option value="">Select home type</option>
-                        {% for homeType in homeTypes %}
-                            <option value="{{ homeType }}">{{ homeType }}</option>
+                <div class="application-form__field application-form__field--full">
+                    <label class="application-form__label" for="projectType">Project type</label>
+                    <select class="application-form__control" id="projectType" name="projectType" required>
+                        <option value="">Select project type</option>
+                        {% for projectType in projectTypes %}
+                            <option value="{{ projectType }}">{{ projectType }}</option>
                         {% endfor %}
                     </select>
                 </div>
 
                 <div class="application-form__field">
-                    <label class="application-form__label" for="fireplaceUnit">Fireplace unit</label>
-                    <select class="application-form__control" id="fireplaceUnit" name="fireplaceUnit">
-                        <option value="">Select fireplace unit</option>
-                        {% for fireplaceUnitType in fireplaceUnitTypes %}
-                            <option value="{{ fireplaceUnitType }}">{{ fireplaceUnitType }}</option>
-                        {% endfor %}
+                    <label class="application-form__label" for="preferredStartTime">Preferred start time</label>
+                    <select class="application-form__control" id="preferredStartTime" name="preferredStartTime">
+                        <option value="">Select preferred start time</option>
+                        <option value="ASAP">ASAP</option>
+                        <option value="Within 1 month">Within 1 month</option>
+                        <option value="1-3 months">1-3 months</option>
+                        <option value="Just planning">Just planning</option>
                     </select>
                 </div>
 
+                <div class="application-form__field">
+                    <label class="application-form__label" for="budgetRange">Budget range</label>
+                    <input class="application-form__control" id="budgetRange" type="text" name="budgetRange" placeholder="e.g. $20,000 - $40,000">
+                </div>
+
                 <div class="application-form__field application-form__field--full">
-                    <label class="application-form__label" for="finishWanted">Finish wanted</label>
-                    <select class="application-form__control" id="finishWanted" name="finishWanted">
-                        <option value="">Select finish wanted</option>
-                        {% for finishWantedType in finishWantedTypes %}
-                            <option value="{{ finishWantedType }}">{{ finishWantedType }}</option>
-                        {% endfor %}
+                    <label class="application-form__label" for="ownsProperty">Do you own the property?</label>
+                    <select class="application-form__control" id="ownsProperty" name="ownsProperty">
+                        <option value="">Select option</option>
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
                     </select>
                 </div>
 
-                <div class="application-form__field application-form__field--full">
-                    <label class="application-form__label" for="spaceSetup">Describe your space setup</label>
-                    <textarea class="application-form__control application-form__control--textarea" id="spaceSetup" name="spaceSetup"></textarea>
-                </div>
+                <div class="application-form__dynamic-fields application-form__field--full" data-dynamic-fields></div>
 
                 <div class="application-form__field application-form__field--full">
-                    <label class="application-form__label" for="howDidYourHearAboutUs">How did you hear about us?</label>
-                    <textarea class="application-form__control application-form__control--textarea" id="howDidYourHearAboutUs" name="howDidYourHearAboutUs"></textarea>
-                </div>
-
-                <div class="application-form__field application-form__field--full">
-                    <label class="application-form__label" for="spacePhoto">Space photo</label>
-                    <input class="application-form__control application-form__control--file" id="spacePhoto" type="file" name="spacePhoto" accept="image/*">
-                </div>
-
-                <div class="application-form__field application-form__field--full">
-                    <label class="application-form__label" for="additionalNotes">Additional notes</label>
+                    <label class="application-form__label" for="additionalNotes">Short description</label>
                     <textarea class="application-form__control application-form__control--textarea" id="additionalNotes" name="additionalNotes" required></textarea>
+                </div>
+
+                <div class="application-form__field application-form__field--full">
+                    <label class="application-form__label" for="spacePhoto">Upload photos</label>
+                    <input class="application-form__control application-form__control--file" id="spacePhoto" type="file" name="spacePhoto[]" accept="image/*" multiple>
                 </div>
 
                 <p class="application-form__status application-form__field--full" role="status" aria-live="polite"></p>

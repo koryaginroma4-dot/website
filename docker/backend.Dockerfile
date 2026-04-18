@@ -3,6 +3,7 @@ FROM php:8.5-fpm-alpine
 RUN apk add --no-cache \
     git \
     curl \
+    icu-dev \
     freetype-dev \
     libpng-dev \
     libjpeg-turbo-dev \
@@ -15,11 +16,11 @@ RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install -j$(nproc) \
         pdo_pgsql \
         pgsql \
-        pdo_mysql \
         mbstring \
         exif \
         pcntl \
         bcmath \
+        intl \
         gd \
         zip
 

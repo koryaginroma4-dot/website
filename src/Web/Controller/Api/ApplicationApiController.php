@@ -47,18 +47,10 @@ final class ApplicationApiController extends AbstractController
 
     private function uploadSpacePhoto(mixed $spacePhoto): ?string
     {
-        if (!$spacePhoto instanceof UploadedFile) {
+        $uploadedFiles = $this->normalizeUploadedFiles($spacePhoto);
+
+        if ($uploadedFiles === []) {
             return null;
-        }
-
-        if (!$spacePhoto->isValid()) {
-            throw new RuntimeException('Uploaded space photo is invalid.');
-        }
-
-        $mimeType = (string) $spacePhoto->getMimeType();
-
-        if (!str_starts_with($mimeType, 'image/')) {
-            throw new InvalidArgumentException('Space photo must be an image.');
         }
 
         $uploadDirectory = sprintf('%s/public/uploads/applications', $this->projectDir);
@@ -67,14 +59,53 @@ final class ApplicationApiController extends AbstractController
             throw new RuntimeException('Could not create upload directory.');
         }
 
-        $fileName = sprintf(
-            'application-%s.%s',
-            bin2hex(random_bytes(8)),
-            $spacePhoto->guessExtension() ?? 'bin'
-        );
+        $uploadedPhotoPaths = [];
 
-        $spacePhoto->move($uploadDirectory, $fileName);
+        foreach ($uploadedFiles as $uploadedFile) {
+            if (!$uploadedFile->isValid()) {
+                throw new RuntimeException('Uploaded space photo is invalid.');
+            }
 
-        return sprintf('uploads/applications/%s', $fileName);
+            $mimeType = (string) $uploadedFile->getMimeType();
+
+            if (!str_starts_with($mimeType, 'image/')) {
+                throw new InvalidArgumentException('Space photo must be an image.');
+            }
+
+            $fileName = sprintf(
+                'application-%s.%s',
+                bin2hex(random_bytes(8)),
+                $uploadedFile->guessExtension() ?? 'bin'
+            );
+
+            $uploadedFile->move($uploadDirectory, $fileName);
+            $uploadedPhotoPaths[] = sprintf('uploads/applications/%s', $fileName);
+        }
+
+        return implode(PHP_EOL, $uploadedPhotoPaths);
+    }
+
+    /**
+     * @return array<UploadedFile>
+     */
+    private function normalizeUploadedFiles(mixed $spacePhoto): array
+    {
+        if ($spacePhoto instanceof UploadedFile) {
+            return [$spacePhoto];
+        }
+
+        if (!is_array($spacePhoto)) {
+            return [];
+        }
+
+        $uploadedFiles = [];
+
+        foreach ($spacePhoto as $uploadedFile) {
+            if ($uploadedFile instanceof UploadedFile) {
+                $uploadedFiles[] = $uploadedFile;
+            }
+        }
+
+        return $uploadedFiles;
     }
 }
