@@ -13,6 +13,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\DependencyInjection\Attribute\Autowire;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Attribute\Route;
 use Throwable;
@@ -35,13 +36,13 @@ final class ApplicationApiController extends AbstractController
 
             $this->applicationService->save($applicationDTO);
 
-            return new JsonResponse(['message' => 'Application created successfully.'], JsonResponse::HTTP_CREATED);
+            return new JsonResponse(['message' => 'Application created successfully.'], Response::HTTP_CREATED);
         } catch (InvalidArgumentException $exception) {
-            return new JsonResponse(['message' => $exception->getMessage()], JsonResponse::HTTP_BAD_REQUEST);
+            return new JsonResponse(['message' => $exception->getMessage()], Response::HTTP_BAD_REQUEST);
         } catch (SaveApplicationException $exception) {
-            return new JsonResponse(['message' => 'Application could not be created.'], JsonResponse::HTTP_INTERNAL_SERVER_ERROR);
+            return new JsonResponse(['message' => 'Application could not be created.'], Response::HTTP_INTERNAL_SERVER_ERROR);
         } catch (Throwable $exception) {
-            return new JsonResponse(['message' => 'Unexpected server error.'], JsonResponse::HTTP_INTERNAL_SERVER_ERROR);
+            return new JsonResponse(['message' => 'Unexpected server error.'], Response::HTTP_INTERNAL_SERVER_ERROR);
         }
     }
 

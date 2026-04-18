@@ -12,18 +12,20 @@ final class ReviewDTO
         public readonly string $authorName,
         public readonly ?string $authorLocation,
         public readonly string $comment,
+        public readonly ?string $resultPhotoUrl,
     ) {
     }
 
     /**
      * @param array<string, mixed> $requestData
      */
-    public static function fromRequestData(array $requestData): self
+    public static function fromRequestData(array $requestData, ?string $resultPhotoUrl): self
     {
         return new self(
             authorName: self::requiredString($requestData, 'authorName'),
             authorLocation: self::nullableString($requestData, 'authorLocation'),
             comment: self::requiredString($requestData, 'comment'),
+            resultPhotoUrl: $resultPhotoUrl,
         );
     }
 

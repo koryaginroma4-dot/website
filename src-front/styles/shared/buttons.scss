@@ -8,7 +8,7 @@ button {
 .button {
     padding: 15px 30px;
     color: colors.$black;
-    background-color: colors.$white;
+    background-color: #FCFBF4;
     border-radius: 10px;
     font-size: fonts.$medium;
     display: inline-flex;
@@ -24,18 +24,15 @@ button {
     transition: .3s ease-in-out;
 }
 
-.button > a {
-    display: block;
-    width: 100%;
-}
-
-.btn-bg-d-grey {
-    background-color: colors.$dark-grey !important;
+.btn-bg-green {
+    color: colors.$white;
+    background-color: colors.$main-background !important;
 
     &:hover {
-        background-color: colors.$dark-grey-hover !important;
+        background-color: colors.$main-background-hover !important;
     }
 }
+
 @media (max-width: 680px) {
     .button {
         padding: 13px 20px;

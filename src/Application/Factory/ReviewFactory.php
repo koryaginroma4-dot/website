@@ -15,6 +15,7 @@ class ReviewFactory
             ->setAuthorName($reviewDTO->authorName)
             ->setAuthorLocation($reviewDTO->authorLocation)
             ->setComment($reviewDTO->comment)
+            ->setResultPhotoUrl($reviewDTO->resultPhotoUrl)
             ->setCreatedAt(new \DateTimeImmutable());
     }
 }

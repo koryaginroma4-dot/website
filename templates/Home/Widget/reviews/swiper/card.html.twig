@@ -11,11 +11,20 @@
                 </p>
             </header>
         </div>
+        {% if review.resultPhotoUrl %}
+            <div class="reviews-swiper-card__result-photo">
+                <img src="{{ image_url(review.resultPhotoUrl) }}" alt="Work result photo by {{ review.authorName }}">
+            </div>
+        {% endif %}
         <div class="reviews-swiper-card__footer-container">
             <footer class="reviews-swiper-card__footer">
                 <div class="reviews-swiper-card__author">
                     <div class="reviews-swiper-card__author-badge">
-                        {{ review.authorName|slice(0, 1)|upper }}
+                        {% if review.photoUrl %}
+                            <img src="{{ image_url(review.photoUrl) }}" />
+                        {% else %}
+                            {{ review.authorName|slice(0, 1)|upper }}
+                        {% endif %}
                     </div>
                     <div class="reviews-swiper-card__author-about">
                         <div class="reviews-swiper-card__author-name">

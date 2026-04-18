@@ -26,6 +26,11 @@ class Review
     #[ORM\Column(type: Types::TEXT)]
     private string $comment;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $photoUrl = null;
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $resultPhotoUrl = null;
+
     #[ORM\Column(type: Types::DATETIME_IMMUTABLE)]
     private \DateTimeImmutable $createdAt;
 
@@ -78,6 +83,30 @@ class Review
     public function setCreatedAt(\DateTimeImmutable $createdAt): self
     {
         $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    public function getPhotoUrl(): ?string
+    {
+        return $this->photoUrl;
+    }
+    
+    public function setPhotoUrl(?string $photoUrl = null): self
+    {
+        $this->photoUrl = $photoUrl;
+
+        return $this;
+    }
+
+    public function getResultPhotoUrl(): ?string
+    {
+        return $this->resultPhotoUrl;
+    }
+
+    public function setResultPhotoUrl(?string $resultPhotoUrl = null): self
+    {
+        $this->resultPhotoUrl = $resultPhotoUrl;
 
         return $this;
     }

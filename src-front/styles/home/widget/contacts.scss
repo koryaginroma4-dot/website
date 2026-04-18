@@ -25,7 +25,7 @@
         font-size: fonts.$prebig;
     }
 
-    & > button {
+    & > .button {
         margin-top: 30px;
     }
 }
@@ -59,7 +59,7 @@
             font-size: fonts.$medium;
         }
 
-        & > button {
+        & > .button {
             margin-top: 24px;
             width: 100%;
         }

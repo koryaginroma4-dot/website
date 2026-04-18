@@ -1,0 +1,1 @@
+import './styles/terms-of-service/index.scss';

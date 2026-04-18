@@ -18,7 +18,7 @@
                 Share your feedback about your renovation experience with our team.
             </p>
 
-            <form class="review-form" id="review-form" method="post" action="{{ path('api_review_create') }}" data-endpoint="{{ path('api_review_create') }}">
+            <form class="review-form" id="review-form" method="post" action="{{ path('api_review_create') }}" enctype="multipart/form-data" data-endpoint="{{ path('api_review_create') }}">
                 <div class="review-form__field">
                     <label class="review-form__label" for="authorName">Name</label>
                     <input class="review-form__control" id="authorName" type="text" name="authorName" required>
@@ -33,11 +33,15 @@
                     <label class="review-form__label" for="comment">Review</label>
                     <textarea class="review-form__control review-form__control--textarea" id="comment" name="comment" required></textarea>
                 </div>
+                <div class="review-form__field review-form__field--full">
+                    <label class="review-form__label" for="resultPhoto">Result photo</label>
+                    <input class="review-form__control review-form__control--file" id="resultPhoto" type="file" name="resultPhoto" accept="image/*">
+                </div>
 
                 <p class="review-form__status review-form__field--full" role="status" aria-live="polite"></p>
 
                 <div class="review-form__actions review-form__field--full">
-                    <button class="button btn-bg-d-grey" type="submit">Submit review</button>
+                    <button class="button" type="submit">Submit review</button>
                 </div>
             </form>
         </section>

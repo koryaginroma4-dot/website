@@ -66,6 +66,10 @@
             min-height: 140px;
             resize: vertical;
         }
+
+        &--file {
+            padding: 10px 12px;
+        }
     }
 
     &__status {

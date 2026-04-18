@@ -1,6 +1,8 @@
 <header class="header">
     <nav class="header-navigation">
-        <a href="/" class="header-navigation__logo">Toronto Reno Experts</a>
+        <a href="/" class="header-navigation__logo">
+            <img src="{{ asset('logo.png') }}" alt="toronto reno experts logotype" />
+        </a>
 
         <div class="header-navigation__separator"></div>
 
@@ -26,9 +28,7 @@
         </ul>
     </nav>
 
-    <button class="button header__desktop-cta">
-        <a href="{{ path('application') }}">Call for a Quote</a>
-    </button>
+    <a class="button header__desktop-cta btn-bg-green" href="{{ path('application') }}">Call for a Quote</a>
 
     <button
         class="header__burger"
@@ -74,6 +74,6 @@
             </ul>
         </nav>
 
-        <a class="button header-sidebar__cta" href="{{ path('application') }}">Call for a Quote</a>
+        <a class="button header-sidebar__cta btn-bg-green" href="{{ path('application') }}">Call for a Quote</a>
     </aside>
 </header>

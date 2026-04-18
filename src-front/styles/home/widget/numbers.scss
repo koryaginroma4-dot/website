@@ -48,35 +48,30 @@
             position: relative;
 
             &:first-child {
-                padding-top: 144px;
-
                 &::before {
                     content: '';
                     position: absolute;
                     left: 0;
                     bottom: 0;
-                    height: calc(100% - 144px);
+                    height: 100%;
                     width: 1px;
                     background-color: #7c7e88;
                 }
             }
             
             &:nth-child(2) {
-                padding-top: 98px;
-
                 &::before {
                     content: '';
                     position: absolute;
                     left: 0;
                     bottom: 0;
-                    height: calc(100% - 98px);
+                    height: 100%;
                     width: 1px;
                     background-color: #7c7e88;
                 }
             }
             
             &:nth-child(3) {
-                padding-top: 48px;
             }
 
             &:nth-child(4) {

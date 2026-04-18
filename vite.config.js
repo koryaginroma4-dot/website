@@ -18,7 +18,9 @@ export default defineConfig({
                 main: path.resolve(__dirname, 'src-front/main.ts'),
                 home: path.resolve(__dirname, 'src-front/home.ts'),
                 application: path.resolve(__dirname, 'src-front/application.ts'),
-                review: path.resolve(__dirname, 'src-front/review.ts')
+                review: path.resolve(__dirname, 'src-front/review.ts'),
+                privacy_policy: path.resolve(__dirname, 'src-front/privacy-policy.ts'),
+                terms_of_service: path.resolve(__dirname, 'src-front/terms-of-service.ts')
             }
         }
     },
