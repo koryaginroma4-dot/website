@@ -52,6 +52,8 @@
         color: colors.$white;
         border-radius: 10px;
         padding: 14px 16px;
+        width: 100%;
+        min-width: 0;
         font-family: inherit;
         font-size: fonts.$medium;
         outline: none;
@@ -69,6 +71,7 @@
 
         &--file {
             padding: 10px 12px;
+            max-width: 100%;
         }
     }
 
@@ -78,6 +81,7 @@
         font-size: fonts.$medium;
         font-weight: 300;
         color: rgba(251, 252, 253, 0.7);
+        overflow-wrap: anywhere;
 
         &[data-state="success"] {
             color: #9be79b;
@@ -113,6 +117,34 @@
     }
 
     .review-form {
+        margin-top: 28px;
         grid-template-columns: 1fr;
+        gap: 16px;
+
+        &__actions {
+            .button {
+                width: 100%;
+            }
+        }
+    }
+}
+
+@media (max-width: 420px) {
+    .review-page {
+        padding: 24px 12px 48px;
+    }
+
+    .review {
+        padding: 22px 14px;
+        border-radius: 16px;
+
+        &__title {
+            font-size: 28px;
+        }
+    }
+
+    .review-form {
+        margin-top: 24px;
+        gap: 14px;
     }
 }
